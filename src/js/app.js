@@ -26,13 +26,13 @@
     var html = document.querySelector("html");
     var clockDom = document.getElementById('digits');
     var dateDom = document.getElementById('date');
+    var amPmDom = document.getElementById('ampm');
 
 
 
     /**
      * Checktime
-     * Changes DOM clock time and determines if background needs to be changed in
-     * order to represent the day light, sunset/sunrize or night
+     * Changes DOM clock, date and weather the time is "ante meridiem"
      *
      * @since 0.0.1
      */
@@ -41,27 +41,16 @@
         var date = new Date();
         var hour = date.getHours();
         var minutes = date.getMinutes();
-        var sup = hour < 12 ? '<sup>AM</sup>' : '';
 
-        /**
-         * Draw DOM clock
-         */
-        clockDom.innerHTML = date.getHours() + '<i>:</i>' + (minutes < 10 ? '0' + minutes : minutes);
+        amPmDom.innerHTML = hour < 12 ? '<sup>AM</sup>' : '';
 
+        clockDom.innerHTML = hour + '<i>:</i>' + (minutes < 10 ? '0' + minutes : minutes);
 
-        /**
-         * Draw DOM date
-         */
-        dateDom.innerHTML = dayNames[date.getDay()] + ' ' + date.getDate() + ', ' + monthNames[date.getMonth()] + ' ' + date.getFullYear();
+        dateDom.innerHTML = dayNames[date.getDay()-1] + ' ' + date.getDate() + ', ' + monthNames[date.getMonth()] + ' ' + date.getFullYear();
     }
 
 
 
-    /**
-     * All done let's init
-     *
-     * @since 0.0.1
-     */
     checkTime();
     setInterval(checkTime, 1000);
 })();
