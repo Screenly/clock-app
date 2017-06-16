@@ -13,7 +13,7 @@
     },
     "browserslist": {
         "browsers" : [
-            "Chrome > 20",
+            "Chrome > 20"
         ]
     },
     "dependencies": {
