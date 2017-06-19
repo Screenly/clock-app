@@ -1,0 +1,13 @@
+version: '3'
+services:
+  gulp:
+    build: .
+    volumes:
+      - .:/app
+      - /app/node_modules
+  nginx:
+    image: nginx
+    volumes:
+      - .:/usr/share/nginx/html
+    ports:
+      - 8080:80
