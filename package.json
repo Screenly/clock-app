@@ -12,7 +12,7 @@
         "url": "https://github.com/"
     },
     "browserslist": {
-        "browsers" : [
+        "browsers": [
             "Chrome > 20"
         ]
     },
