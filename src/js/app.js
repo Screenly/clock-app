@@ -13,7 +13,7 @@
     ];
 
     var dayNames = [
-        "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"
+        "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"
     ];
 
 
@@ -46,7 +46,7 @@
 
         clockDom.innerHTML = hour + '<i>:</i>' + (minutes < 10 ? '0' + minutes : minutes);
 
-        dateDom.innerHTML = dayNames[date.getDay()-1] + ' ' + date.getDate() + ', ' + monthNames[date.getMonth()] + ' ' + date.getFullYear();
+        dateDom.innerHTML = dayNames[date.getDay()] + ' ' + date.getDate() + ', ' + monthNames[date.getMonth()] + ' ' + date.getFullYear();
     }
 
 
