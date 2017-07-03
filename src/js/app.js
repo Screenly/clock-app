@@ -42,8 +42,6 @@
         var hour = date.getHours();
         var minutes = date.getMinutes();
 
-        amPmDom.innerHTML = hour < 12 ? '<sup>AM</sup>' : '';
-
         clockDom.innerHTML = hour + '<i>:</i>' + (minutes < 10 ? '0' + minutes : minutes);
 
         dateDom.innerHTML = dayNames[date.getDay()] + ' ' + date.getDate() + ', ' + monthNames[date.getMonth()] + ' ' + date.getFullYear();
