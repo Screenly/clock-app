@@ -26,7 +26,10 @@
             <span>© 2017 Screenly, Inc.</span>
         </footer>
 
-        <!-- FRONT-END SCRIPTS -->
+        <script src="https://cdn.ravenjs.com/3.16.1/raven.min.js" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            Raven.config('https://0bc2d70969eb4b33944ca68dd2f511fc@sentry.io/187328').install();
+        </script>
         <script type="text/javascript" src="assets/js/app.js"></script>
         <script>
          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
