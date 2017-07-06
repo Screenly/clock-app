@@ -44,7 +44,8 @@ var flatten = require('gulp-flatten');
 var prefix = require('gulp-autoprefixer');
 var cleanCSS = require('gulp-clean-css');
 var sourceMaps = require('gulp-sourcemaps');
-var imageMin = require ('gulp-imagemin');
+var imageMin = require('gulp-imagemin');
+var rev = require('gulp-rev');
 
 
 
@@ -66,6 +67,7 @@ gulp.task('css', function() {
         .pipe(cleanCSS())
         .pipe(minify())
         .pipe(concat('vendor.css'))
+        .pipe(rev())
         .pipe(gulp.dest(folder.build.css));
 
     // APP CSS FILES
@@ -74,6 +76,7 @@ gulp.task('css', function() {
         .pipe(sass().on('error', sass.logError))
         .pipe(cleanCSS())
         .pipe(sourceMaps.write(''))
+        .pipe(rev())
         .pipe(gulp.dest(folder.build.css));
 });
 
@@ -99,6 +102,7 @@ gulp.task('js', function() {
             folder.source.js_vendor + 'moment-timezone-with-data.js'
         ])
         .pipe(concat('vendor.js'))
+        .pipe(rev())
         .pipe(gulp.dest(folder.build.js));
 
     // APP JS FILES
@@ -108,6 +112,7 @@ gulp.task('js', function() {
         .pipe(uglify())
         .pipe(sourceMaps.write(''))
         .pipe(flatten())
+        .pipe(rev())
         .pipe(gulp.dest(folder.build.js));
 });
 
@@ -129,20 +134,22 @@ gulp.task('static', function() {
         folder.build.img,
         folder.build.svg,
         folder.build.fonts
-    ],
-    { read: false });
+    ], { read: false });
 
     // VENDOR
-   
+
     var img = gulp.src(folder.source.img)
         .pipe(imageMin())
+        .pipe(rev())
         .pipe(gulp.dest(folder.build.img));
 
     var svg = gulp.src(folder.source.svg)
-        .pipe(imageMin([imageMin.svgo({plugins: [{removeViewBox: true}]})]))
+        .pipe(imageMin([imageMin.svgo({ plugins: [{ removeViewBox: true }] })]))
+        .pipe(rev())
         .pipe(gulp.dest(folder.build.svg));
 
     var fonts = gulp.src(folder.source.fonts)
+        .pipe(rev())
         .pipe(gulp.dest(folder.build.fonts));
 
     return img && svg && fonts;
