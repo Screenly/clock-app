@@ -26,7 +26,6 @@
     var html = document.querySelector("html");
     var clockDom = document.getElementById('digits');
     var dateDom = document.getElementById('date');
-    var amPmDom = document.getElementById('ampm');
 
 
 

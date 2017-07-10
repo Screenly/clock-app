@@ -34,7 +34,7 @@ html {
         transition: background 1s;
         background-repeat: no-repeat;
         background-position: center center;
-        background-image: url(../img/bg-night.jpg);
+        background-image: url(asset_path("bg-night.jpg"));
     }
 }
 
