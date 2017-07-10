@@ -11,10 +11,11 @@
 
 .DS_Store
 
-/node_modules
-/assets
-/build
 
-rev-manifest.json
-/index.html
-!src/index.html
+/_gulp-version
+
+# Jekyll ignore
+_site/
+.sass-cache/
+.asset-cache/
+.jekyll-metadata

@@ -47,20 +47,20 @@ section {
     }
 }
 
-#clock{
+#clock {
     display: inline-block;
 }
 
-#ampm {
-    margin:0;
+#ampm {
+    margin: 0;
     font-size: 37px;
     font-size: 3vw;
     font-weight: 300;
     text-align: right;
 }
 
-#date {
-    margin:0;
+#date {
+    margin: 0;
     font-size: 37px;
     font-size: 3vw;
     font-weight: 300;
@@ -68,19 +68,16 @@ section {
 }
 
 
-/*
-    MEDIA QUERIES
-*/
+/**
+ * MEDIA QUERIES
+ */
 
 @media screen and (max-width: 800px) {
-
     section {
-
         h1 {
             font-size: 190px;
             font-size: 23.4vw;
             letter-spacing: -7px;
-
             i {
                 margin: 0 30px;
                 font-size: 190px;

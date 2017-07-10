@@ -1,14 +1,15 @@
 version: '3'
 services:
-  gulp:
-    build: .
-    command: bash -c "gulp && gulp watch"
+  jekyll:
+    image: jekyll/jekyll
+    command: jekyll build --watch --incremental
     volumes:
-      - .:/app
-      - /app/node_modules
+      - .:/srv/jekyll
   nginx:
     image: nginx
     volumes:
-      - .:/usr/share/nginx/html
+      - ./_site:/usr/share/nginx/html
     ports:
       - 8080:80
+    depends_on:
+      - jekyll
