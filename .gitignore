@@ -16,4 +16,5 @@
 /build
 
 rev-manifest.json
-index.html
+/index.html
+!src/index.html
