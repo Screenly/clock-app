@@ -13,6 +13,7 @@ exclude: ["
   "*.log",
   "autoprefixer.yml",
   "docker-compose.yml",
+  "deploy.sh",
 ]
 
 # Themes are encouraged to use these universal variables
@@ -20,7 +21,7 @@ exclude: ["
 #
 brand: Clock App
 title: Screenly Clock App
-tagline: Your app store for digital signage
+tagline: Digital Light
 email: hello@screenly.io
 author:
   name: Screenly
@@ -47,7 +48,7 @@ excerpt_separator: "<!--more-->"
 # Else if you are pushing to username.github.io, replace with your username.
 # Finally if you are pushing to a GitHub project page, include the project name at the end.
 #
-production_url: http://apps.screenlyapp.com
+production_url: https://clock.srly.io
 #url: http://apps.screenly.io
 #url: http://dev.sansxerif.com/screenly/store
 
@@ -125,7 +126,7 @@ JB:
   analytics:
     provider: google
     google:
-        tracking_id: 'UA-000-00'
+        tracking_id: 'UA-37846380-1'
     getclicky:
       site_id:
     mixpanel:
