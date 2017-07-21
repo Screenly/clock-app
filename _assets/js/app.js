@@ -29,7 +29,7 @@
 
     // var mmt = moment();
 
-    var local, mmt;
+    var local;
     var lat = window.srly.getQueryVar('lat');
     var lng = window.srly.getQueryVar('lng');
     var ip = window.srly.getQueryVar('ip');
@@ -58,7 +58,7 @@
      */
     function init() {
 
-        mmt = moment ();
+        
 
         /**
          * Run time process for first time
@@ -90,18 +90,27 @@
      */
     function checkTime() {
 
+        var mmt = moment ();
+
+        if (local.properties.country) {
+            mmt.locale(local.properties.country.toLowerCase());
+        }
+
+        if (local.properties.timezone) {
+            mmt.tz(local.properties.timezone);
+        }
+
+
         /**
          * Draw DOM clock
          */
         clockDom.innerHTML = mmt.format('HH[<i>:</i>]mm');
 
 
-
         /**
          * Draw DOM date
          */
         dateDom.innerHTML = mmt.format('dddd, MMMM Do YYYY');
-
 
 
         /**
@@ -136,18 +145,7 @@
             oReq.addEventListener("load", function(e) {
                 // register local
                 if (e.target.status === 200) {
-                    var json = JSON.parse(e.target.response);
-                    local = json.properties;
-
-                    // CHANGE LOCALE INFO GLOBALLY
-                    if (local.country) {
-                        moment.locale(local.country.toLowerCase());
-                    }
-
-                    // CHANGE TIMEZONE INFO GLOBALLY
-                    if (local.timezone) {
-                        moment.tz(local.timezone);
-                    }
+                    local = JSON.parse(e.target.response);
 
                     // INIT APP
                     init ();
