@@ -92,8 +92,10 @@
 
         var mmt = moment ();
 
-        if (local.properties.country) {
-            mmt.locale(local.properties.country.toLowerCase());
+        if (local.properties.language) {
+            if (local.properties.language.length > 0){
+                mmt.locale(local.properties.language[0].iso639_1);
+            }
         }
 
         if (local.properties.timezone) {
@@ -110,7 +112,7 @@
         /**
          * Draw DOM date
          */
-        dateDom.innerHTML = mmt.format('dddd, MMMM Do YYYY');
+        dateDom.innerHTML = mmt.format('d MMMM, YYYY');
 
 
         /**
