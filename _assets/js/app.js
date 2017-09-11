@@ -112,7 +112,7 @@
         /**
          * Draw DOM date
          */
-        dateDom.innerHTML = mmt.format('d MMMM, YYYY');
+        dateDom.innerHTML = mmt.format('D MMMM, YYYY');
 
 
         /**
