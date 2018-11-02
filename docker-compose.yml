@@ -1,0 +1,15 @@
+version: '3'
+services:
+  jekyll:
+    image: jekyll/jekyll
+    command: jekyll build --watch --incremental
+    volumes:
+      - .:/srv/jekyll
+  nginx:
+    image: nginx
+    volumes:
+      - ./_site:/usr/share/nginx/html
+    ports:
+      - 3001:80
+    depends_on:
+      - jekyll

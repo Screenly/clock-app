@@ -1,0 +1,21 @@
+
+#Mr Developer
+.mr.developer.cfg
+
+# Emacs
+.#*
+
+# VIM
+*.swp
+*.swo
+
+.DS_Store
+
+
+/_gulp-version
+
+# Jekyll ignore
+_site/
+.sass-cache/
+.asset-cache/
+.jekyll-metadata
