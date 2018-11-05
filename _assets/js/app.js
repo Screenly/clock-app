@@ -33,6 +33,7 @@
     var lat = window.srly.getQueryVar('lat');
     var lng = window.srly.getQueryVar('lng');
     var ip = window.srly.getQueryVar('ip');
+    var clock_format_24h = window.srly.getQueryVar('24h');
 
 
 
@@ -108,7 +109,14 @@
         /**
          * Draw DOM clock
          */
-        clockDom.innerHTML = mmt.format('HH[<i>:</i>]mm');
+        switch (clock_format_24h) {
+            case '0':
+                clockDom.innerHTML = mmt.format('hh[<i>:</i>]mm [<span style="font-size:0.5em;">]A[</span>]');
+                break;
+            default:
+                clockDom.innerHTML = mmt.format('HH[<i>:</i>]mm');
+                break;
+        }
 
 
         /**
