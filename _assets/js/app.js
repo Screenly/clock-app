@@ -12,7 +12,7 @@
  */
 //= require app.getQueryVar
 //= require app.getLocalData
-
+//= require app.utils
 
 
 /**
@@ -59,7 +59,7 @@
      */
     function init() {
 
-        
+        var digits = document.querySelector("#digits");
 
         /**
          * Run time process for first time
@@ -67,6 +67,11 @@
          * @since 0.0.1
          */
         checkTime();
+
+        window.srly.scaleElementFontSize(digits);
+        window.addEventListener('resize', function (e) {
+            window.srly.scaleElementFontSize(digits);
+        });
 
 
         /**
@@ -111,10 +116,12 @@
          */
         switch (clock_format_24h) {
             case '0':
-                clockDom.innerHTML = mmt.format('hh[<i>:</i>]mm [<span style="font-size:0.5em;">]A[</span>]');
+                clockDom.innerHTML = mmt.format(
+                    '[<span>]h[&nbsp;<i>:</i>&nbsp;]mm[&nbsp;<span style="font-size:0.5em;">]A[</span>][</span>]'
+                );
                 break;
             default:
-                clockDom.innerHTML = mmt.format('HH[<i>:</i>]mm');
+                clockDom.innerHTML = mmt.format('[<span>]HH[&nbsp;<i>:</i>&nbsp;]mm[</span>]');
                 break;
         }
 

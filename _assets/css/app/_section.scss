@@ -28,21 +28,18 @@ section {
         margin: 0;
         padding: 0;
         font-weight: 100;
-        font-size: 443px;
         font-size: 26.4vw;
         line-height: 0.9em;
         text-align: center;
         letter-spacing: -22px;
-
+        display: inline-block;
+        white-space: nowrap;
         i {
-            margin: 0 70px;
             position: relative;
             font-style: normal;
             display: inline-block;
             transform: translateY(-25%);
             -webkit-transform: translateY(-25%);
-            font-size: 340px;
-            font-size: 28.3vw;
             vertical-align: middle;
         }
     }
@@ -50,11 +47,12 @@ section {
 
 #clock {
     display: inline-block;
+    width: 70%;
+    max-width: 70%;
 }
 
 #ampm {
     margin: 0;
-    font-size: 37px;
     font-size: 3vw;
     font-weight: 300;
     text-align: right;
@@ -62,7 +60,6 @@ section {
 
 #date {
     margin: 0;
-    font-size: 37px;
     font-size: 3vw;
     font-weight: 300;
     text-align: right;
@@ -76,12 +73,10 @@ section {
 @media screen and (max-width: 800px) {
     section {
         h1 {
-            font-size: 190px;
             font-size: 23.4vw;
             letter-spacing: -7px;
             i {
                 margin: 0 30px;
-                font-size: 190px;
                 font-size: 23.3vw;
                 transform: translateY(-20%);
                 -webkit-transform: translateY(-20%);
