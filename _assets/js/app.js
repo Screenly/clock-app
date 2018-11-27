@@ -59,8 +59,6 @@
      */
     function init() {
 
-        var digits = document.querySelector("#digits");
-
         /**
          * Run time process for first time
          *
@@ -68,9 +66,9 @@
          */
         checkTime();
 
-        window.srly.scaleElementFontSize(digits);
+        window.srly.scaleElementFontSize(clockDom);
         window.addEventListener('resize', function (e) {
-            window.srly.scaleElementFontSize(digits);
+            window.srly.scaleElementFontSize(clockDom);
         });
 
 
@@ -124,6 +122,8 @@
                 clockDom.innerHTML = mmt.format('[<span>]HH[&nbsp;<i>:</i>&nbsp;]mm[</span>]');
                 break;
         }
+
+        window.srly.scaleElementFontSize(clockDom);
 
 
         /**
