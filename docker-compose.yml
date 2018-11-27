@@ -1,12 +1,14 @@
 version: '3'
 services:
   jekyll:
-    image: jekyll/jekyll
+    build: .
     command: jekyll build --watch --incremental
+    environment:
+      - JEKYLL_ENV=development
     volumes:
-      - .:/srv/jekyll
+      - .:/usr/src/app:delegated
   nginx:
-    image: nginx
+    image: nginx:stable-alpine
     volumes:
       - ./_site:/usr/share/nginx/html
     ports:
