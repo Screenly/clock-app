@@ -10,6 +10,6 @@ if [ "$GITBRANCH" == 'production' ]; then
         --rm \
         -v $(pwd):/usr/src/app \
         -e JEKYLL_ENV=production \
-        clock_srly_io:latest \
+        clockapp_jekyll:latest \
         bundle exec htmlproofer ./_site || true
 fi
