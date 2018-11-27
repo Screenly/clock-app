@@ -18,5 +18,5 @@ docker run \
     --rm \
     -v $(pwd):/usr/src/app \
     -e JEKYLL_ENV=production \
-    clockapp_jekyll:latest \
+    clock_srly_io:latest \
     jekyll build --config "$BUILDARGS"
