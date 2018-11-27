@@ -6,7 +6,7 @@ services:
     environment:
       - JEKYLL_ENV=development
     volumes:
-      - .:/usr/src/app:delegated
+      - .:/srv/jekyll
     image: clock_srly_io:latest
   nginx:
     image: nginx:stable-alpine
