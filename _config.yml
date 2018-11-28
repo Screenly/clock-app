@@ -1,20 +1,22 @@
-# This is the default format.
-# For more see: http://jekyllrb.com/docs/permalinks/
-permalink: /blog/:year/:month/:day/:title/
-
-exclude: ["
-  .rvmrc",
-  ".rbenv-version",
-  "README.md",
-  "Rakefile",
-  "changelog.md",
-  "Gemfile",
-  "Gemfile.lock",
-  "*.log",
-  "autoprefixer.yml",
-  "docker-compose.yml",
-  "deploy.sh",
-]
+exclude:
+  - .arcconfig
+  - .git
+  - .gitignore
+  - .jekyll-metadata
+  - .asset-cache
+  - .idea
+  - README.md
+  - Rakefile
+  - changelog.md
+  - Gemfile
+  - Gemfile.lock
+  - '*.log'
+  - autoprefixer.yml
+  - docker-compose.yml
+  - Dockerfile
+  - 'bin/*'
+  - 'ci/*'
+  - pages.tmp
 
 # Themes are encouraged to use these universal variables
 # so be sure to set them if your theme uses them.
@@ -49,6 +51,7 @@ excerpt_separator: "<!--more-->"
 # Else if you are pushing to username.github.io, replace with your username.
 # Finally if you are pushing to a GitHub project page, include the project name at the end.
 #
+production_url: https://clock.srly.io
 url: https://clock.srly.io
 
 #url: http://apps.screenly.io
