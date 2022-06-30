@@ -98,10 +98,8 @@
 
         var mmt = moment ();
 
-        if (local.properties.language) {
-            if (local.properties.language.length > 0){
-                mmt.locale(local.properties.language[0].iso639_1);
-            }
+        if (local.properties.lang) {
+            mmt.locale(local.properties.lang);
         }
 
         if (local.properties.timezone) {
