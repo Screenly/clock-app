@@ -19,5 +19,5 @@ jobs:
         with:
           environment: stage
           apiToken: ${{ secrets.CF_API_TOKEN }}
-          accountId: ${{ secrets.CF_ACCOUNT_ID }
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
           command: publish --env stage

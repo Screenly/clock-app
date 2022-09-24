@@ -99,7 +99,7 @@ body {
   #time {
     font-size: 10rem;
   }
-  
+
   #time span {
     font-size: 3.3rem;
   }
@@ -125,7 +125,7 @@ body {
   #time {
     font-size: 21.25rem;
   }
-  
+
   #time span {
     font-size: 7rem;
   }
@@ -153,7 +153,7 @@ body {
   #time {
     font-size: 25rem;
   }
-  
+
   #time span {
     font-size: 8rem;
   }
@@ -179,7 +179,7 @@ body {
   #time {
     font-size: 31.25rem;
   }
-  
+
   #time span {
     font-size: 10rem;
   }
@@ -190,7 +190,6 @@ body {
     text-align: right;
   }
 }
-
 
 @media screen and (min-width: 800px) and (orientation: landscape) {
   .content {
@@ -204,7 +203,7 @@ body {
   #time {
     font-size: 7.5rem;
   }
-  
+
   #time span {
     font-size: 2.5rem;
   }
@@ -231,7 +230,7 @@ body {
   #time {
     font-size: 12.5rem;
   }
-  
+
   #time span {
     font-size: 4rem;
   }
@@ -257,7 +256,7 @@ body {
   #time {
     font-size: 21.25rem;
   }
-  
+
   #time span {
     font-size: 7rem;
   }
@@ -283,7 +282,7 @@ body {
   #time {
     font-size: 25rem;
   }
-  
+
   #time span {
     font-size: 8rem;
   }
@@ -309,7 +308,7 @@ body {
   #time {
     font-size: 31.25rem;
   }
-  
+
   #time span {
     font-size: 10rem;
   }
