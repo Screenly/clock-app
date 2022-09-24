@@ -55,10 +55,6 @@ body {
   width: fit-content;
 }
 
-.footer {
-
-}
-
 .date {
   display: flex;
   align-items: center;
@@ -75,10 +71,6 @@ body {
 
 #time span {
   font-size: 2.5rem;
-}
-
-@media screen and (min-width: 375px) {
-  
 }
 
 @media screen and (min-width: 480px) {
@@ -151,7 +143,7 @@ body {
 
   #date {
     font-size: 3rem;
-    margin-left: 20px;
+    margin-left: 15px;
   }
 
   #time {
