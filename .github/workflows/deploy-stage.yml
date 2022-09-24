@@ -19,9 +19,5 @@ jobs:
         with:
           environment: stage
           apiToken: ${{ secrets.CF_API_TOKEN }}
-          accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          secrets: |
-            OPEN_WEATHER_API_KEY
+          accountId: ${{ secrets.CF_ACCOUNT_ID }
           command: publish --env stage
-        env:
-          OPEN_WEATHER_API_KEY: ${{ secrets.OPEN_WEATHER_API_KEY_STAGE }}

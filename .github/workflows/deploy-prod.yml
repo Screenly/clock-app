@@ -20,8 +20,4 @@ jobs:
           environment: production
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          secrets: |
-            OPEN_WEATHER_API_KEY
           command: publish --env production
-        env:
-          OPEN_WEATHER_API_KEY: ${{ secrets.OPEN_WEATHER_API_KEY_PRODUCTION }}
