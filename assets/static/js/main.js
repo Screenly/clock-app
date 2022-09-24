@@ -7,11 +7,19 @@
     timeFormat = Intl.DateTimeFormat(locale, { hour: 'numeric' }).resolvedOptions().hourCycle || 'h12'
   }
 
-  /**
-   * Update Local Time and Date
-   */
+  const loadBackground = (img = 'default') => {
+    const imagesPath = '/static/images'
+    const imgSrc = `${imagesPath}/${img}.jpg`
+    const image = new Image()
 
-  const convert24to12format = (hrs) => hrs > 12 ? hrs - 12 : hrs
+    image.addEventListener('load', () => {
+      document.body.style.backgroundImage = `url(${imgSrc})`
+    })
+
+    image.src = imgSrc
+  }
+
+  const convert24to12format = (hrs) => hrs % 12 || 12
 
   const padTime = (time) => String(time).padStart(2, '0')
 
@@ -43,21 +51,18 @@
     return `${date} ${month}, ${year}`
   }
 
-  const updateContent = (id, text) => {
-    document.querySelector(`#${id}`).innerText = text
-  }
-
   const initDateTime = () => {
-    const now = new Date()
     clearTimeout(clockTimer)
+    const now = new Date()
 
-    updateContent('date', formatDate(now))
+    document.querySelector('#date').innerText = formatDate(now)
     document.querySelector('#time').innerHTML = formatTime(now)
 
-    clockTimer = setTimeout(() => initDateTime(tzOffset), 30000)
+    clockTimer = setTimeout(initDateTime, 20000)
   }
 
   const init = () => {
+    loadBackground('clear')
     setTimeFormat(country)
     initDateTime()
   }

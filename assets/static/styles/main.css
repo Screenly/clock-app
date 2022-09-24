@@ -25,7 +25,7 @@ body {
   background-color: gray;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url("/static/images/clear.jpg");
+  background-image: url("/static/images/default-min.jpg");
   background-size: cover;
   color: #fff;
   font-family: Barlow, sans-serif;
@@ -220,7 +220,8 @@ body {
   }
 
   .upgrade-banner {
-    font-size: 2rem;
+    font-size: 1.2rem;
+    padding: 10px 20px;
   }
 
   .date img {
