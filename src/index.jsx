@@ -1,5 +1,4 @@
 import { Hono } from 'hono'
-// import { cache } from 'hono/cache'
 import { logger } from 'hono/logger'
 import { serveStatic } from 'hono/serve-static.module'
 import { jsx } from 'hono/jsx'
@@ -28,7 +27,5 @@ app.get('/', async (c) => {
   
   return response
 })
-
-//app.get('*', cache({ cacheName: 'default', cacheControl: 'max-age=43200' }))
 
 export default app
