@@ -62,10 +62,20 @@
     clockTimer = setTimeout(initDateTime, 20000)
   }
 
+  const setBanner = () => {
+    const banner = document.querySelector('.upgrade-banner')
+    const { userAgent } = navigator
+
+    if (!userAgent.includes('screenly-viewer')) {
+      banner.classList.add('visible')
+    }
+  }
+
   const init = () => {
     loadBackground('clear')
     setTimeFormat(country)
     initDateTime()
+    setBanner()
   }
 
   init()

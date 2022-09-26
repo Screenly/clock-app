@@ -1,9 +1,9 @@
 export const sentryIds = {
-  stage: '7e5bb34f38f44a24b0ce818389e5e27d',
-  production: 'ff622e69999746ef9fa0b9e4ccb25b2c'
+  stage: 'bcd35952132d4cb3b72197d4955c51ed',
+  production: '00b0ce5f09514ab29983da9f5e62c572'
 }
 
 export const gaIds = {
-  stage: 'G-JKR8780BXH',
-  production: 'G-SF5E8GXW6E'
+  stage: 'G-LF4DGYP50W',
+  production: 'G-QD11F7ZZ1B'
 }

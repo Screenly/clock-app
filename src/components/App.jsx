@@ -11,7 +11,7 @@ const App = (props) => {
   return (
     <Layout country={country} sentryId={sentryId} gaId={gaId}>
       <div class='content'>
-        <Header showCTA={props.showCTA} />
+        <Header />
         <Footer />
       </div>
     </Layout>

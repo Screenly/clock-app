@@ -12,12 +12,9 @@ app.use('/static/*', serveStatic({ root: './' }))
 
 app.get('/', async (c) => {
   const env = c.env.ENV
-  const userAgent = c.req.header('user-agent')
-  const isScreenlyViewerReq = userAgent.includes('screenly-viewer')
-
   const country = c.req.cf.country
 
-  const response = new Response(<App env={env} country={country} showCTA={!isScreenlyViewerReq} />, {
+  const response = new Response(<App env={env} country={country} />, {
     status: 200,
     headers: {
       'Cache-Control': 'maxage=43200',

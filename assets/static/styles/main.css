@@ -45,18 +45,19 @@ body {
   text-align: center;
 }
 
-.hidden {
-  display: none;
-}
-
 .upgrade-banner {
   background: #7732b7;
   border-radius: 60px;
   color: #fff;
+  display: none;
   font-size: 0.6rem;
   padding: 10px 20px;
   text-decoration: none;
   width: fit-content;
+}
+
+.visible {
+  display: inline-block;
 }
 
 .date {
