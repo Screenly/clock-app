@@ -7,7 +7,7 @@
   const getDefaultTimePreference = () => {
     const url = new URL(window.location)
     const preference = url.searchParams.get('24h')
-    
+
     if (typeof preference === 'string') {
       return preference === '0' ? 'h12' : 'h24'
     }
