@@ -1,6 +1,6 @@
 # Screenly Clock App
 
-![Clock App Screenshot][(https://github.com/Screenly/standalone-app-store/blob/master/_assets/img/app-clock-digital.jpg?raw=true)
+![Clock App Screenshot](https://github.com/Screenly/standalone-app-store/blob/master/_assets/img/app-clock-digital.jpg?raw=true)
 
 This is an example asset for Screenly as part of the [Screenly Playground](https://github.com/Screenly/playground).
 
