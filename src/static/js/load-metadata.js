@@ -1,3 +1,6 @@
+/* global screenlyMetadataEndpoint, initApp */
+
+// eslint-disable-next-line no-unused-vars
 function loadMetadata () {
   if (typeof screenlyMetadataEndpoint === 'function') {
     fetch(screenlyMetadataEndpoint())
@@ -12,4 +15,3 @@ function loadMetadata () {
     console.warn('Virtual file not loaded')
   }
 }
-  
