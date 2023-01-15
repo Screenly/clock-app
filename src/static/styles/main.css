@@ -25,7 +25,7 @@ body {
   background-color: gray;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url("/static/images/default-min.jpg");
+  background-image: url("../images/clear.jpg");
   background-size: cover;
   color: #fff;
   font-family: Barlow, sans-serif;
