@@ -23,10 +23,6 @@ function initApp (country) {
     }
   }
 
-  const generateAnalyticsEvent = (name, payload) => {
-    typeof gtag !== 'undefined' && gtag('event', name, payload) // eslint-disable-line no-undef
-  }
-
   const convert24to12format = (hrs) => hrs % 12 || 12
 
   const padTime = (time) => String(time).padStart(2, '0')
@@ -69,26 +65,10 @@ function initApp (country) {
     clockTimer = setTimeout(initDateTime, 20000)
   }
 
-  const setBanner = () => {
-    const banner = document.querySelector('.upgrade-banner')
-    const { userAgent } = navigator
-    const isScreenlyDevice = userAgent.includes('screenly-viewer')
-
-    if (!isScreenlyDevice) {
-      banner.classList.add('visible')
-    }
-
-    generateAnalyticsEvent('device', {
-      app_name: 'Screenly Clock App',
-      screenly_device: isScreenlyDevice
-    })
-  }
-
   const init = () => {
     // loadBackground('clear')
     setTimeFormat(country)
     initDateTime()
-    setBanner()
   }
 
   init()
