@@ -2,7 +2,7 @@
 syntax: manifest_v1
 id: 01JZHR7YXWK81TNPY9F9JKQ5H4
 description: Screenly Clock Edge App
-icon: https://playground.srly.io/edge-apps/clock/static/img/icon.svg
+icon: https://playground.srly.io/edge-apps/icons/clock.svg
 author: Screenly, Inc.
 categories:
   - Utilities
