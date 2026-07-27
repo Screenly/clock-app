@@ -6,31 +6,42 @@
     <title>Clock - Screenly Edge App</title>
     <script src="screenly.js?version=1"></script>
   </head>
-  <body>
+  <body
+    class="text-white text-shadow bg-[url('/static/images/bg.webp')] bg-cover bg-center bg-no-repeat before:content-[''] before:fixed before:inset-0 before:z-[var(--z-index-backdrop)] before:pointer-events-none before:bg-black/20 before:backdrop-blur-[7px]"
+  >
     <auto-scaler
       reference-width="1920"
       reference-height="1080"
       orientation="auto"
+      class="relative z-[var(--z-index-content)]"
     >
-      <div id="app">
+      <div id="app" class="w-full h-full">
         <app-header class="header" show-date></app-header>
-        <main class="content">
-          <section class="current">
-            <div class="city" data-location>--</div>
-            <div class="time-wrapper">
-              <span class="time" data-time>--:--</span>
-              <span class="clock-period" data-period>--</span>
+        <main
+          class="mt-[160px] ml-[300px] portrait:m-0 portrait:flex portrait:flex-col portrait:justify-center portrait:items-start portrait:flex-1 portrait:h-full portrait:pl-[60px]"
+        >
+          <section class="flex flex-col portrait:ml-[60px]">
+            <div class="text-[32px] portrait:text-[40px]" data-location>--</div>
+            <div class="flex items-baseline gap-2">
+              <span
+                class="font-[Kelly_Slab,serif] text-[160px] font-normal leading-none tracking-[-5px] my-4 portrait:text-[180px]"
+                data-time
+                >--:--</span
+              >
+              <span class="text-[2.25rem] opacity-90" data-period>--</span>
             </div>
-            <div class="status-row">
-              <span class="date" data-date>--</span>
-              <div class="temperature-wrapper">
+            <div
+              class="inline-flex items-center gap-4 px-5 py-2.5 rounded-2xl border border-white/[0.06] bg-[linear-gradient(135deg,rgba(255,255,255,0.06)_0%,rgba(255,255,255,0.01)_100%)] shadow-[0_13.438px_40.315px_0_rgba(0,0,0,0.15),0_1.68px_0_0_rgba(255,255,255,0.1)_inset,0_-1.68px_0_0_rgba(255,255,255,0.03)_inset] w-fit portrait:text-[24px]"
+            >
+              <span class="text-[1rem]" data-date>--</span>
+              <div class="temperature-wrapper flex items-center gap-1.5">
                 <img
                   src="static/images/icons/clear.svg"
                   alt="weather icon"
-                  class="temperature-icon"
+                  class="w-4 h-4"
                   data-weather-icon
                 />
-                <span class="temperature" data-temperature>--°</span>
+                <span class="text-[1rem]" data-temperature>--°</span>
               </div>
             </div>
           </section>
