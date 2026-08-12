@@ -8,6 +8,13 @@
   --clock-rule: rgb(255 255 255 / 12%);
 }
 
+body.is-light-brand {
+  --clock-canvas: #f6f6f8;
+  --clock-ink: #0a0a0f;
+  --clock-ink-dim: rgb(10 10 15 / 58%);
+  --clock-rule: rgb(10 10 15 / 14%);
+}
+
 body {
   color: var(--clock-ink);
   background-color: var(--clock-canvas);

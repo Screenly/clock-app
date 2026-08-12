@@ -4,6 +4,7 @@ import {
   getMetadata,
   getTimeZone,
   getLocale,
+  isLightColor,
   setupTheme,
   signalReady,
   getCityInfo,
@@ -74,7 +75,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     weatherIconEl = document.querySelector('[data-weather-icon]')
     weatherEl = document.querySelector('[data-weather]')
 
-    setupTheme()
+    const { primary } = setupTheme()
+    document.body.classList.toggle('is-light-brand', isLightColor(primary))
 
     const metadata = getMetadata()
     const [latitude, longitude] = metadata.coordinates
