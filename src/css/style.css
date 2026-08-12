@@ -1,43 +1,21 @@
-/* Import Screenly Design System */
 @import '@screenly/edge-apps/styles';
 
-/* App-specific styles */
-
-@font-face {
-  font-family: 'Kelly Slab';
-  src: url('/static/fonts/KellySlab-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-* {
-  box-sizing: border-box;
+:root {
+  --clock-accent: var(--theme-color-primary, #972eff);
+  --clock-canvas: #08080d;
+  --clock-ink: #fff;
+  --clock-ink-dim: rgb(255 255 255 / 55%);
+  --clock-rule: rgb(255 255 255 / 12%);
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  color: white;
-  font-family: 'Inter', system-ui, sans-serif;
-  background: url('/static/images/bg.webp') no-repeat center center;
-  background-size: cover;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
-}
-
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: var(--z-index-backdrop);
-  pointer-events: none;
-  background: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(7px);
-}
-
-.text-shadow {
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  color: var(--clock-ink);
+  background-color: var(--clock-canvas);
+  background-image: radial-gradient(
+    ellipse 75% 50% at 50% 0%,
+    color-mix(in srgb, var(--clock-accent) 45%, transparent),
+    transparent
+  );
 }
 
 auto-scaler {
@@ -45,118 +23,98 @@ auto-scaler {
   z-index: var(--z-index-content);
 }
 
-#app {
-  width: 100%;
-  height: 100%;
-}
-
-.content {
-  margin-top: 160px;
-  margin-left: 300px;
-}
-
-.current {
+.clock {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  width: 100%;
+  height: 100%;
+  text-align: center;
 }
 
-.city {
-  font-size: 32px;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+.clock-place {
+  margin: 0;
+  color: var(--clock-ink-dim);
+  font-size: 2.5rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
 }
 
-.time-wrapper {
+.clock-time {
   display: flex;
   align-items: baseline;
-  gap: 0.5rem;
+  justify-content: center;
+  gap: 1.5rem;
 }
 
-.time {
-  font-family: 'Kelly Slab', serif;
-  font-size: 160px;
-  font-weight: 400;
-  line-height: 1;
-  letter-spacing: -5px;
-  margin: 1rem 0;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+.clock-time-value {
+  font-size: 30rem;
+  font-weight: 500;
+  line-height: 0.82;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
 }
 
-.clock-period {
-  font-size: 2.25rem;
-  opacity: 0.9;
+.clock-time-period {
+  color: var(--clock-ink-dim);
+  font-size: 5rem;
+  font-weight: 500;
 }
 
-.status-row {
-  display: inline-flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.625rem 1.25rem;
-  border-radius: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.06) 0%,
-    rgba(255, 255, 255, 0.01) 100%
-  );
-  box-shadow:
-    0 13.438px 40.315px 0 rgba(0, 0, 0, 0.15),
-    0 1.68px 0 0 rgba(255, 255, 255, 0.1) inset,
-    0 -1.68px 0 0 rgba(255, 255, 255, 0.03) inset;
-  width: fit-content;
-}
-
-.date {
-  font-size: 1rem;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
-}
-
-.temperature-wrapper {
+.clock-meta {
   display: flex;
   align-items: center;
-  gap: 0.375rem;
+  justify-content: center;
+  gap: 1.75rem;
+  color: var(--clock-ink-dim);
+  font-size: 2.25rem;
 }
 
-.temperature {
-  font-size: 1rem;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+.clock-weather {
+  display: none;
+  align-items: center;
+  gap: 0.75rem;
+  padding-left: 1.75rem;
+  border-left: 0.0625rem solid var(--clock-rule);
 }
 
-.temperature-icon {
-  width: 1rem;
-  height: 1rem;
+.clock-weather.is-visible {
+  display: inline-flex;
+}
+
+.clock-weather-icon {
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 @media (orientation: portrait) {
-  #app {
-    display: flex;
+  .clock {
+    gap: 4.5rem;
+  }
+
+  .clock-place {
+    font-size: 3rem;
+  }
+
+  .clock-time-value {
+    font-size: 19rem;
+  }
+
+  .clock-time-period {
+    font-size: 4rem;
+  }
+
+  .clock-meta {
     flex-direction: column;
-    height: 100%;
+    gap: 2rem;
+    font-size: 2.75rem;
   }
 
-  main.content {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    flex: 1;
-    height: 100%;
-    padding-left: 60px;
-  }
-
-  .current {
-    margin-left: 60px;
-  }
-
-  .city {
-    font-size: 40px;
-  }
-
-  .time {
-    font-size: 180px;
-  }
-
-  .status-row {
-    font-size: 24px;
+  .clock-weather {
+    padding-left: 0;
+    border-left: 0;
   }
 }

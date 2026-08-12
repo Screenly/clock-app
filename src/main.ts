@@ -4,47 +4,28 @@ import {
   getMetadata,
   getTimeZone,
   getLocale,
+  setupTheme,
   signalReady,
   getCityInfo,
 } from '@screenly/edge-apps'
-// Import components to register them as custom elements
-// This registers <brand-logo>, <app-header>, <auto-scaler>, and <edge-app-devtools>
+// Side-effect import: registers <auto-scaler> as a custom element
 import '@screenly/edge-apps/components'
 import { getWeatherData } from './weather'
 import { getTimeData } from './time'
 
-// Note: Auto-scaling and dev tools are now handled declaratively in index.html
-// via <auto-scaler> and <edge-app-devtools> web components
+const WEATHER_REFRESH_MS = 15 * 60 * 1000
 
-// DOM elements (will be initialized in DOMContentLoaded)
 let locationEl: Element | null
 let timeEl: Element | null
 let periodEl: Element | null
 let dateEl: Element | null
 let temperatureEl: Element | null
 let weatherIconEl: HTMLImageElement | null
-let temperatureWrapperEl: Element | null
+let weatherEl: Element | null
 
-// State
 let timezone: string = 'UTC'
 let locale: string = 'en'
-let locationName: string = 'Unknown Location'
 
-// Hide temperature section helper
-function hideTemperatureSection() {
-  if (temperatureWrapperEl) {
-    ;(temperatureWrapperEl as HTMLElement).style.display = 'none'
-  }
-}
-
-// Show temperature section helper
-function showTemperatureSection() {
-  if (temperatureWrapperEl) {
-    ;(temperatureWrapperEl as HTMLElement).style.display = ''
-  }
-}
-
-// Update weather display
 async function updateWeatherDisplay(
   latitude: number,
   longitude: number,
@@ -53,12 +34,8 @@ async function updateWeatherDisplay(
 ) {
   const weatherData = await getWeatherData(latitude, longitude, tz, countryCode)
 
-  if (!weatherData) {
-    hideTemperatureSection()
-    return
-  }
-
-  showTemperatureSection()
+  weatherEl?.classList.toggle('is-visible', Boolean(weatherData))
+  if (!weatherData) return
 
   if (temperatureEl) {
     temperatureEl.textContent = weatherData.displayText
@@ -70,7 +47,6 @@ async function updateWeatherDisplay(
   }
 }
 
-// Update time display
 function updateTime() {
   const now = new Date()
   const data = getTimeData(now, locale, timezone)
@@ -88,55 +64,41 @@ function updateTime() {
   }
 }
 
-// Initialize app
 document.addEventListener('DOMContentLoaded', async () => {
   try {
-    // Query DOM elements now that DOM is ready
     locationEl = document.querySelector('[data-location]')
     timeEl = document.querySelector('[data-time]')
     periodEl = document.querySelector('[data-period]')
     dateEl = document.querySelector('[data-date]')
     temperatureEl = document.querySelector('[data-temperature]')
-    weatherIconEl = document.querySelector(
-      '[data-weather-icon]',
-    ) as HTMLImageElement | null
-    temperatureWrapperEl = document.querySelector('.temperature-wrapper')
+    weatherIconEl = document.querySelector('[data-weather-icon]')
+    weatherEl = document.querySelector('[data-weather]')
 
-    // Get metadata (includes coordinates)
+    setupTheme()
+
     const metadata = getMetadata()
     const [latitude, longitude] = metadata.coordinates
 
-    // Get timezone and locale from coordinates
     timezone = await getTimeZone()
     locale = await getLocale()
 
-    // Get location info (includes city name and country code)
     const { cityName, countryCode } = await getCityInfo(latitude, longitude)
-    locationName = cityName
     if (locationEl) {
-      locationEl.textContent = locationName
+      locationEl.textContent = cityName
     }
 
-    // Get weather data (optional)
     await updateWeatherDisplay(latitude, longitude, timezone, countryCode)
 
-    // Update time immediately
     updateTime()
-
-    // Update time every second
     setInterval(updateTime, 1000)
-
-    // Refresh weather every 15 minutes
-    setInterval(
-      () => {
-        updateWeatherDisplay(latitude, longitude, timezone, countryCode)
-      },
-      15 * 60 * 1000,
-    )
+    setInterval(() => {
+      updateWeatherDisplay(latitude, longitude, timezone, countryCode).catch(
+        (error) => console.error('Failed to refresh weather:', error),
+      )
+    }, WEATHER_REFRESH_MS)
   } catch (error) {
     console.error('Failed to initialize app:', error)
   }
 
-  // Signal that the app is ready to be shown
   signalReady()
 })
