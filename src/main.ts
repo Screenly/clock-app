@@ -13,6 +13,7 @@ import {
 import '@screenly/edge-apps/components'
 import { getWeatherData } from './weather'
 import { getTimeData } from './time'
+import { getClockStyle } from './style'
 
 const WEATHER_REFRESH_MS = 15 * 60 * 1000
 
@@ -77,6 +78,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const { primary } = setupTheme()
     document.body.classList.toggle('is-light-brand', isLightColor(primary))
+    document.body.classList.add(`style-${getClockStyle()}`)
 
     const metadata = getMetadata()
     const [latitude, longitude] = metadata.coordinates
