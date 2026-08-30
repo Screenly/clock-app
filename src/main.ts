@@ -73,7 +73,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     periodEl = document.querySelector('[data-period]')
     dateEl = document.querySelector('[data-date]')
     temperatureEl = document.querySelector('[data-temperature]')
-    weatherIconEl = document.querySelector('[data-weather-icon]')
+    weatherIconEl = document.querySelector<HTMLImageElement>(
+      '[data-weather-icon]',
+    )
     weatherEl = document.querySelector('[data-weather]')
 
     const { primary } = setupTheme()
