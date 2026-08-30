@@ -17,13 +17,13 @@ import { getClockStyle } from './style'
 
 const WEATHER_REFRESH_MS = 15 * 60 * 1000
 
-let locationEl: Element | null
-let timeEl: Element | null
-let periodEl: Element | null
-let dateEl: Element | null
-let temperatureEl: Element | null
-let weatherIconEl: HTMLImageElement | null
-let weatherEl: Element | null
+let locationEl: Element
+let timeEl: Element
+let periodEl: Element
+let dateEl: Element
+let temperatureEl: Element
+let weatherIconEl: HTMLImageElement
+let weatherEl: Element
 
 let timezone: string = 'UTC'
 let locale: string = 'en'
@@ -36,47 +36,34 @@ async function updateWeatherDisplay(
 ) {
   const weatherData = await getWeatherData(latitude, longitude, tz, countryCode)
 
-  weatherEl?.classList.toggle('is-visible', Boolean(weatherData))
+  weatherEl.classList.toggle('is-visible', Boolean(weatherData))
   if (!weatherData) return
 
-  if (temperatureEl) {
-    temperatureEl.textContent = weatherData.displayText
-  }
-
-  if (weatherIconEl) {
-    weatherIconEl.src = weatherData.iconSrc
-    weatherIconEl.alt = weatherData.iconAlt
-  }
+  temperatureEl.textContent = weatherData.displayText
+  weatherIconEl.src = weatherData.iconSrc
+  weatherIconEl.alt = weatherData.iconAlt
 }
 
 function updateTime() {
   const now = new Date()
   const data = getTimeData(now, locale, timezone)
 
-  if (timeEl) {
-    timeEl.textContent = `${data.hour}:${data.minute}`
-  }
-
-  if (periodEl) {
-    periodEl.textContent = data.period
-  }
-
-  if (dateEl) {
-    dateEl.textContent = data.date
-  }
+  timeEl.textContent = `${data.hour}:${data.minute}`
+  periodEl.textContent = data.period
+  dateEl.textContent = data.date
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
   try {
-    locationEl = document.querySelector('[data-location]')
-    timeEl = document.querySelector('[data-time]')
-    periodEl = document.querySelector('[data-period]')
-    dateEl = document.querySelector('[data-date]')
-    temperatureEl = document.querySelector('[data-temperature]')
+    locationEl = document.querySelector('[data-location]')!
+    timeEl = document.querySelector('[data-time]')!
+    periodEl = document.querySelector('[data-period]')!
+    dateEl = document.querySelector('[data-date]')!
+    temperatureEl = document.querySelector('[data-temperature]')!
     weatherIconEl = document.querySelector<HTMLImageElement>(
       '[data-weather-icon]',
-    )
-    weatherEl = document.querySelector('[data-weather]')
+    )!
+    weatherEl = document.querySelector('[data-weather]')!
 
     const { primary } = setupTheme()
     document.body.classList.toggle('is-light-brand', isLightColor(primary))
@@ -89,9 +76,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     locale = await getLocale()
 
     const { cityName, countryCode } = await getCityInfo(latitude, longitude)
-    if (locationEl) {
-      locationEl.textContent = cityName
-    }
+    locationEl.textContent = cityName
 
     await updateWeatherDisplay(latitude, longitude, timezone, countryCode)
 

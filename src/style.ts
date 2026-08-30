@@ -1,10 +1,10 @@
 import { getSettingWithDefault } from '@screenly/edge-apps'
 
-export type ClockStyle = 'traditional' | 'modern' | 'minimal'
+const STYLES = ['traditional', 'modern', 'minimal'] as const
+
+export type ClockStyle = (typeof STYLES)[number]
 
 export const DEFAULT_STYLE: ClockStyle = 'traditional'
-
-const STYLES: readonly string[] = ['traditional', 'modern', 'minimal']
 
 /**
  * Normalise a style setting, falling back to the default for anything the app
@@ -13,9 +13,9 @@ const STYLES: readonly string[] = ['traditional', 'modern', 'minimal']
  */
 export function resolveStyle(value: string | undefined | null): ClockStyle {
   const normalised = value?.trim().toLowerCase()
-  if (!normalised || !STYLES.includes(normalised)) return DEFAULT_STYLE
+  const match = STYLES.find((style) => style === normalised)
 
-  return normalised as ClockStyle
+  return match ?? DEFAULT_STYLE
 }
 
 export function getClockStyle(): ClockStyle {
