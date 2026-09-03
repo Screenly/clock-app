@@ -6,3 +6,4 @@ mock-data.yml
 static/js/*.js
 static/js/*.js.map
 screenshots/*.png
+.env
