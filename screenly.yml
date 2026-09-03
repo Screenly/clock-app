@@ -1,6 +1,5 @@
 ---
 syntax: manifest_v1
-id: 01HKT2K8GVE8P6RE36QFKPG5G1
 description: Screenly Clock Edge App
 icon: https://playground.srly.io/edge-apps/icons/clock.svg
 author: Screenly, Inc.
@@ -43,6 +42,23 @@ settings:
     help_text: |
       Override the default timezone with a supported timezone identifier (e.g., Europe/London, America/New_York). Defaults to the system timezone if left blank.
       You can find the available timezones here: https://momentjs.com/timezone/
+  style:
+    type: string
+    default_value: traditional
+    title: Style
+    optional: true
+    help_text:
+      properties:
+        help_text: Select the visual style for the clock.
+        options:
+        - label: Traditional
+          value: traditional
+        - label: Modern
+          value: modern
+        - label: Minimal
+          value: minimal
+        type: select
+      schema_version: 1
   tag_manager_id:
     type: string
     default_value: GTM-P98SPZ9Z
