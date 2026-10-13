@@ -1,4 +1,8 @@
+[![Version](https://img.shields.io/github/v/release/Screenly/clock-app)](https://github.com/Screenly/clock-app/releases/latest)
+
 # Screenly Clock App
+
+![Clock App Preview](/screenshots/1920x1080.webp)
 
 ## Getting Started
 
