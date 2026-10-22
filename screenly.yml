@@ -1,6 +1,6 @@
 ---
 syntax: manifest_v1
-description: Screenly Clock Edge App
+description: Display the time
 icon: https://playground.srly.io/edge-apps/icons/clock.svg
 author: Screenly, Inc.
 categories:
